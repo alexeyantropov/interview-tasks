@@ -9,7 +9,7 @@ def cam_or_under (s: str) -> str:
     ret = str()
     # A pointer initial value. It points to the start of the line.
     i = 0
-    # Two boolean variables for a wrong input line detection. The wrong line сontains signs of the camelCase and the underscored style at same time.
+    # Two boolean variables for a wrong line. The wrong line сontains signs of the camelCase and the underscored style at same time.
     is_under = False
     is_camel = False
     while i < len(s):
