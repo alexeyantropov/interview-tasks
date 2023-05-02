@@ -1,10 +1,18 @@
-test_case = [['cat', 'cat'], ['cat', 'cut'], ['cat', 'cutt'], ['caaat', 'cat'], ['cat', 'cat_'], ['cat', 'dat']]
+# Task:
+# Determine if one replacement is enough to make strings are equal.
+
+test_case = [['cat', 'cat'], ['cat', 'cut'], ['cat', 'cutt'], ['caaat', 'cat'], ['cat', 'cat_'], ['cat', 'dat'], ['cat', '_cat'], ['a', 'bb']]
 
 def do_task(case):
 	word1, word2 = case[0], case[1]
+	p1, p2, diff_is_found = 0, 0, False
 	if abs(len(word1) - len(word2)) > 1:
 		return(False)
-	p1, p2, diff_is_found = 0, 0, False
+	if abs(len(word1) - len(word2)) > 0 and word1[0] != word2[0]:
+		if word1[0] == word2[1]:
+			p2 += 1
+		if word1[1] == word2[0]:
+			p1 += 1
 	while p1 < len(word1) and p2 < len(word2):
 		if word1[p1] == word2[p2]:
 			pass
