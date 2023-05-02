@@ -1,9 +1,10 @@
 #!/Users/aleksey.antropov/miniconda/bin/python3
+"""
+Find a local minima for given fucntion and return them as list.
+Return None if there isn't any local minimas.
+Note about: https://en.wikipedia.org/wiki/Maximum_and_minimum .
+"""
 
-# Task: Find a local minima for given fucntion.
-# Note https://en.wikipedia.org/wiki/Maximum_and_minimum
-
-# The test set:
 graphs = [
     [3,1,2,0,6],            # 0, 1
     [4,2,2,1,3],            # 1
