@@ -56,6 +56,23 @@ def local_minima_two(arr: list) -> list:
                 ret = add_to_arr(ret, tmp)
     return(ret)
 
+# The third one.
+def local_minima_three(arr: list) -> list:
+    ret = set()
+    if len(arr) < 3:
+        ret.add(min(arr))
+        return(list(ret))
+    for i in range(len(arr)):
+        if i == 0:
+            ret.add(min(arr[0:2]))
+        elif i == len(arr) - 1:
+            ret.add(min(arr[len(arr)-2:len(arr)]))
+        else:
+            ret.add(min(arr[i-1:i+2]))
+    return(list(ret))
+
 for test_set in test_sets:
     print(local_minima_one(test_set))
     print(local_minima_two(test_set))
+    print(local_minima_three(test_set))
+    print()
