@@ -6,6 +6,7 @@ Note about: https://en.wikipedia.org/wiki/Maximum_and_minimum .
 """
 graphs = [
     [3,1,2,0,6],            # 0, 1
+    [6,-3,0,2,0,-1,0],      # -3, -1, from Wiki
     [4,2,2,1,3],            # 1
     [1],                    # None
     [2,1],                  # None
