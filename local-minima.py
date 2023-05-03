@@ -1,7 +1,7 @@
 #!/Users/aleksey.antropov/miniconda/bin/python3
 """
-Find local minimas for given function and return them as list.
-Return 'None' if there isn't any local minimas.
+Find local minimas for given function and return them as a list,
+return an empy list if there aren't any local minimas. 
 Note about: https://en.wikipedia.org/wiki/Maximum_and_minimum .
 """
 graphs = [
@@ -15,16 +15,14 @@ graphs = [
 ]
 
 def local_minima(arr: list) -> list:
-    # Corner cases.
-    if len(arr) < 3:
-        return(None)
-    elif len(arr) == 3 and arr[0] > arr[1] < arr[2]:
+    # The corner cases.
+    if len(arr) == 3 and arr[0] > arr[1] < arr[2]:
         return([arr[1]])
-    elif len(arr) == 3:
-        return(None)
+    elif len(arr) == 3 or len(arr) < 3:
+        return([])
     else:
         pass
-    # Main logic.
+    # The general idea is there.
     ret = set()
     for i in range(1, len(arr) - 1):
         if arr[i-1] > arr[i] < arr[i+1]:
