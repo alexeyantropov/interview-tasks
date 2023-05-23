@@ -1,0 +1,23 @@
+Table t:
+|   id  |    name               |
+|   0   |   Dutch van der Linde |
+|   1   |   Arthur Morgan       |
+|   2   |   John Marston        |
+
+
+The first client one:
+> BEGIN;
+> SELECT * FROM t;
+|   id  |    name               |
+|   0   |   Dutch van der Linde |
+|   1   |   Arthur Morgan       |
+|   2   |   John Marston        |
+> update t set name = 'Abigail Roberts' where id = 0;
+> SELECT * from;
+... ?
+
+The second Client:
+> BEGIN;
+> SELECT * FROM t;
+... wait for the first client's update query ...
+> SELECT * FROM t;
