@@ -1,23 +1,26 @@
+# Deploy a big file among many servers as fast as possible. Bottleneck is network bandwidth.
+
 servers = [ 'host-{}'.format(x) for x in range(30) ] # host-0, host-1, host-2, ..., host-30
-seeds = [servers[0]]
 
-i = 0
-while i < len(servers) and len(seeds) < len(servers):
+last_seed = 0 # a pointer to the first server with the file
+step = 0 # just a counter of steps for pretty results prining 
 
-    print('Step {}, copy from {} hosts:'.format(i, len(seeds)))
+while last_seed < len(servers) - 1: # the last pointer value is len(servers)-1
 
-    j = 0
-    while j < len(seeds) and len(seeds) + j < len(servers):
+    print('Step no\t{}'.format(step))
 
-        src_host = seeds[j]
-        dst_host = servers[len(seeds) + j]
+    i = 0
 
-        j += 1
+    while i <= last_seed and last_seed + 1 + i < len(servers): # works while it can make pairs between seeds and destinations
 
-        print('    Pair: {} -> {}'.format(src_host, dst_host)) # or run copy data in parallel
+      src = servers[i]
+      dst = servers[last_seed + 1 + i]
 
-    seeds += servers[len(seeds):len(seeds)+j]
+      i += 1
 
-    i += 1
+      print('\t# scp -A u@{}:/path/file u@{}:/path/file &'.format(src, dst))
 
-print('\nFinal result is {} steps'.format(i))
+    last_seed += i
+    step += 1
+
+print('\nResult:\n\t{} step(s) with parallel copying for {} host(s)'.format(step - 1, len(servers))) 
